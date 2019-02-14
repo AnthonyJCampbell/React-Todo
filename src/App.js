@@ -27,7 +27,7 @@ class App extends React.Component {
         },
       ],
     }
-  }
+    }
 
     addTodo = (Todo) => {
       this.setState(st => ({todos: st.todos.concat({ 
@@ -47,35 +47,12 @@ class App extends React.Component {
       })
     }
 
-    // Add the ability to remove any todos that you have completed. `.filter` will be your best friend here. When a user clicks on the `Clear Completed` button call your handler function that will filter out any todos that have the completed flag toggled to `true`.
-
     removeCompleted = () => {
       this.setState(prevState => {
         return {todos: prevState.todos.filter(todo => todo.completed !== true)}
       })
     }
 
-  // this.setState(lastState => ({
-    //   todos: lastState.todos.map(todo => {
-    //     if (todo.id === id) {
-    //       return { task, id, completed: true}
-    //     }
-    //     return todo;
-    //   })
-    // }));
-
-    // updateFriend = (id, name, age) => {
-    //     // update an existing friend (the `id` tells us which friend to update)
-    //     this.setState(lastState => ({
-    //       friends: lastState.friends.map(friend => {
-    //         if (friend.id === id) {
-    //           return { id, name, age };
-    //         }
-    //         return friend;
-    //       }),
-    //     }));
-    //   }
-  
   render() {
     return (
       <div className="TodoHolder">
