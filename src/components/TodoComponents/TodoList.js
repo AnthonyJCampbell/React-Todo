@@ -3,6 +3,7 @@
 import React from 'react';
 import Todo from './Todo';
 
+
 const TodoList = ({ list, toggleCompleted }) => {
     return (
         <div>
@@ -12,7 +13,7 @@ const TodoList = ({ list, toggleCompleted }) => {
                         toggleCompleted={toggleCompleted}
                         task={todo.task} 
                         completed={todo.completed}  
-                        key={todo.id}/>
+                        id={todo.id}/>
                 )  
             })
             }
