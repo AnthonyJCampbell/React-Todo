@@ -52,7 +52,7 @@
   - [x] Once a todo is submitted, the Todo List should re-render and show the added todo.
 
 #### Day 2 Challenges
-
+ 
 - Add the functionality to toggle your todo's completed flag from `false` to `true`.
   - Once a todo is completed, be sure to demonstrate to the user that the todo is completed by adding a line-through style property if the completed flag is true.
 - Add the ability to remove any todos that you have completed. `.filter` will be your best friend here. When a user clicks on the `Clear Completed` button call your handler function that will filter out any todos that have the completed flag toggled to `true`.
