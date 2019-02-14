@@ -1,4 +1,5 @@
 import React from 'react';
+import uuid from 'uuid';
 
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
@@ -15,18 +16,8 @@ class App extends React.Component {
       todos : [
         {
           task: 'Organize Garage',
-          id: 1,
-          completed: "false"
-        },
-        {
-          task: 'Burn Down Garage',
-          id: 2,
-          completed: "false"
-        },
-        {
-          task: 'Build New Garage',
-          id: 3,
-          completed: "false"
+          id: uuid(),
+          completed: false
         },
       ],
     }
@@ -35,18 +26,33 @@ class App extends React.Component {
     addTodo = (Todo) => {
       this.setState(st => ({todos: st.todos.concat({ 
         task: Todo,
-        id: 10,
-        completed : "false" 
+        id: uuid(),
+        completed : false
       })}))
     }
   
-    toggleCompleted = (idx) => {
-      this.state.todos.foreach(todo => {
-        if (todo.id === idx+1) {
-          this.setState(st => ({ completed: "true" }));
-        }}
-      )
-    }
+    toggleCompleted = (task, id) => {
+      this.setState(lastState => ({
+      todos: lastState.todos.map(todo => {
+        if (todo.id === id) {
+          return { task, id, completed: true}
+        }
+        return todo;
+      })
+    }));
+  }
+
+    // updateFriend = (id, name, age) => {
+    //     // update an existing friend (the `id` tells us which friend to update)
+    //     this.setState(lastState => ({
+    //       friends: lastState.friends.map(friend => {
+    //         if (friend.id === id) {
+    //           return { id, name, age };
+    //         }
+    //         return friend;
+    //       }),
+    //     }));
+    //   }
   
   render() {
     return (

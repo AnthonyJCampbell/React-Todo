@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Todo = ({ idx, completed, task }) => {
+const Todo = ({ toggleCompleted, id, completed, task }) => {
     return (
-        <div data-completed={completed} key={idx}>
+        <div onClick={() => toggleCompleted(task, id)} data-completed={completed} key={id}>
             {task}
         </div>
     );

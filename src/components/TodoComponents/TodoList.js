@@ -6,13 +6,13 @@ import Todo from './Todo';
 const TodoList = ({ list, toggleCompleted }) => {
     return (
         <div>
-            {list.map((todo, idx) => {
+            {list.map((todo) => {
                 return (
                     <Todo 
-                        // onClick={toggleCompleted(idx)} 
+                        toggleCompleted={toggleCompleted}
                         task={todo.task} 
                         completed={todo.completed}  
-                        key={idx}/>
+                        key={todo.id}/>
                 )  
             })
             }
