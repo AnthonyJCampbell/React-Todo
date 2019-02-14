@@ -21,6 +21,11 @@ class TodoForm extends React.Component {
         this.clearInput();
     }
 
+    removeCompleted = (event) => {
+        event.preventDefault();
+        this.props.removeCompleted();
+    }
+
     clearInput = () => {
         this.setState({ input: '' });
     }
@@ -31,7 +36,7 @@ class TodoForm extends React.Component {
                 <form>
                     <input type="text" placeholder="Your To-Do..." value={this.state.input} onChange={this.changeHandler} />
                     <input type="submit" value="Add Todo" onClick={this.onButtonClick} />
-                    <input type="submit" value="Clear Completed" />
+                    <input type="submit" value="Clear Completed" onClick={this.removeCompleted} />
                 </form> 
             </div>
         );
