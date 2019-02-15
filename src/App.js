@@ -69,9 +69,10 @@ class App extends React.Component {
 
   removeCompleted = () => {
     this.setState((prevState)=> {
-      prevState.todos.filter(todo => todo.completed !== true);
+      return {todos: prevState.todos.filter(todo => todo.completed !== true)};
     })
   }
+
 
   render() {
     console.log(this.state)
