@@ -1,4 +1,6 @@
 import React from 'react';
+import uuid from 'uuid';
+import './components/TodoComponents/Todo.css';
 
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
@@ -15,45 +17,48 @@ class App extends React.Component {
       todos : [
         {
           task: 'Organize Garage',
-          id: 1,
-          completed: "false"
+          id: uuid(),
+          completed: false
         },
         {
-          task: 'Burn Down Garage',
-          id: 2,
-          completed: "false"
-        },
-        {
-          task: 'Build New Garage',
-          id: 3,
-          completed: "false"
+          task: 'Build Garage',
+          id: uuid(),
+          completed: false
         },
       ],
     }
-  }
+    }
 
     addTodo = (Todo) => {
       this.setState(st => ({todos: st.todos.concat({ 
         task: Todo,
-        id: 10,
-        completed : "false" 
+        id: uuid(),
+        completed : false
       })}))
     }
   
-    toggleCompleted = (idx) => {
-      this.state.todos.foreach(todo => {
-        if (todo.id === idx+1) {
-          this.setState(st => ({ completed: "true" }));
-        }}
-      )
+    toggleCompleted = (task, id, completed) => {
+      this.setState(prevState => {
+        const arrayWithoutTheOneToBeUpdated = prevState.todos.filter(td => td.id !== id);
+        if (completed === false) {
+          return {todos: arrayWithoutTheOneToBeUpdated.concat({ task, id, completed: true })};
+        }
+          return {todos: arrayWithoutTheOneToBeUpdated.concat({ task, id, completed: false })};
+      })
     }
-  
+
+    removeCompleted = () => {
+      this.setState(prevState => {
+        return {todos: prevState.todos.filter(todo => todo.completed !== true)}
+      })
+    }
+
   render() {
     return (
-      <div>
-        <h2>To do list: MVP!</h2>
+      <div className="TodoHolder">
+        <h2>Total To-do List!</h2>
         <TodoList toggleCompleted={this.toggleCompleted} list={this.state.todos} />
-        <TodoForm addTodo={this.addTodo}/>
+        <TodoForm removeCompleted={this.removeCompleted} addTodo={this.addTodo}/>
       </div>
       
     );

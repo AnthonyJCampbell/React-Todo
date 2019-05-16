@@ -1,0 +1,66 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+#root {
+    padding: 40px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 480px;
+    background: #eee;
+}
+.TodoHolder h2 {
+    text-align: center;
+    font-size: 2.5em;
+    transition: 0.5s;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #eee;
+}
+.TodoHolder h2:hover {
+    border-bottom: 3px solid red;
+}
+.TodoItem {
+    margin: 10px auto;
+    text-align: center;
+    font-size: 1.6em;
+    border: 8px solid white;
+    transition: 1.2s;
+    border-radius: 15px;
+}
+.TodoItem:hover {
+    border: 8px solid lightgreen;
+    border-radius: 0;
+}
+
+
+[data-completed="true"] {
+    text-decoration: line-through;
+    border: 8px solid lightgreen;
+    color: darkolivegreen; 
+    border-radius: 0;
+}
+.TodoForm {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 35%;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 1.6em;
+    height: 2em;
+    padding: 20px;
+}
+.inputBar {
+    width: 80%;
+    padding: 0
+}
+.inputBar:focus {
+    border: 10px solid lightgreen;
+    outline: none;
+}
